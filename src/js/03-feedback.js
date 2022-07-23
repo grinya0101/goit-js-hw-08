@@ -9,7 +9,6 @@ formEL.addEventListener('submit', onFormSubmit)
 formEL.addEventListener('input', throttle(onSaveStorage, 500));
 
 getStorageInputs();
-
 const formData ={};
 
 
