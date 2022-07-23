@@ -1,39 +1,25 @@
-// Add imports above this line
-import { galleryItems } from './gallery-items';
+import { galleryItems } from './gallery-items.js';
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
 
-// Дополнительный импорт стилей
 
-// Change code below this line
-
-console.log(galleryItems);
 
 const gallery = document.querySelector(".gallery");
 
-gallery.addEventListener('click', onContaiterClick)
-
-
- 
-
 const imgGallery = galleryItems.map(({preview, original, description}) => {
     console.log(galleryItems);
-    return `<div class="gallery__item"><a class="gallery__link" href="${original}" ><img class="gallery__image" src="${preview}" data-source="${original}" alt="${description}"></a></div>`
-
-    
+    return `<a class="gallery__item" href="${original}">
+    <img class="gallery__image" src="${preview}" alt="${description}" />
+  </a>`
+       
 }).join(" ");
 
-gallery.insertAdjacentHTML("beforeend", ` ${imgGallery}`); 
+gallery.insertAdjacentHTML("beforeend", ` ${imgGallery}`);
+ 
 
-
-function onContaiterClick (evt){
-    evt.preventDefault()
-    if(!evt.target.classList.contains('gallery__image')){
-        return
-      } 
-      const instance = basicLightbox.create(`
-      <img src="${evt.target.dataset.source}">
-  `)
-      console.log(evt.target.dataset.sourse)
-      instance.show()
-
-
-}
+const imageСaption = new SimpleLightbox('.gallery a', {
+ 
+    overlayOpacity: 1,
+    captionsData: 'alt',
+    captionDelay: 250,
+  });
