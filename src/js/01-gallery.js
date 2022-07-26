@@ -14,6 +14,7 @@ const imgGallery = galleryItems.map(({preview, original, description}) => {
        
 }).join(" ");
 
+
 gallery.insertAdjacentHTML("beforeend", ` ${imgGallery}`);
  
 
